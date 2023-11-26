@@ -1,21 +1,41 @@
 from django.shortcuts import render, redirect
+from django.views import generic
+from django.urls import reverse_lazy
 
 from .models import Item
 
 # Create your views here.
-def item_list(request):
-    items = Item.objects.all()
-    return render(request, 'items/item_list.html', {'items': items})
+class ItemListView(generic.ListView):
+    model = Item
+    template_name = 'items/item_list.html'
+    context_object_name = 'items'
 
-def item_detail(request, id):
-    item = Item.objects.get(id=id)
-    return render(request, 'items/item_detail.html', {'item': item})
+    def get_queryset(self):
+        return Item.objects.all()
 
-def item_create(request, name, description, price):
-    if request.POST:
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        price = request.POST.get('price')
-        Item.objects.create(name=name, description=description, price=price)
-        return redirect('item_list')
+
+class ItemDetailView(generic.DetailView):
+    model = Item
+    template_name = 'items/item_detail.html'
+    context_object_name = 'item'
+
+
+class ItemCreateView(generic.CreateView):
+    model = Item
+    template_name = 'items/item_create.html'
+    fields = ['name', 'description', 'price']
+    success_url = reverse_lazy('items:item_list')
+
+
+class ItemUpdateView(generic.UpdateView):
+    model = Item
+    template_name = 'items/item_update.html'
+    fields = ['description', 'price']
+    success_url = reverse_lazy('items:item_list')
+
+
+class ItemDeleteView(generic.DeleteView):
+    model = Item
+    template_name = 'items/item_delete.html'
+    success_url = reverse_lazy('items:item_list')
 
