@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
-from django.http import HttpResponse
+from .models import Tenant
 
 # Create your views here.
-def index(request):
-    return HttpResponse("<h1>Public Tenants</h1>")
+def tenant_list(request):
+    tenants = Tenant.objects.all()
+    context = {
+        'tenants': tenants
+    }
+    return render(request, 'tenants/tenant_list.html', context)
+

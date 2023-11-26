@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tenant List</title>
+    </head>
+    <body>
+        <h1>ALL Tenants</h1>
+        <ul>
+            {% for tenant in tenants %}
+            <!-- Make the tenant.name clickable a go to anothe urls -->
+                <li>{{ tenant.name }} </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
