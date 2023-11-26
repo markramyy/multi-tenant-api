@@ -148,4 +148,4 @@ TENANT_MODEL = "tenants.Tenant"
 
 TENANT_DOMAIN_MODEL = "tenants.Domain"
 
-PUBLIC_SCHEMA_URLCONF = 'tenants.urls'
+PUBLIC_SCHEMA_URLCONF = 'config.urls'

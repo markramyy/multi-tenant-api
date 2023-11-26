@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+
+from tenants.views import home
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('', include('items.urls')),
+    path('admin/', admin.site.urls),
+    path('tenants/', include("tenants.urls")),
+    path('items/', include('items.urls')),
+    path('', home, name='home'),  # Set the home view for the empty path
+
 ]
