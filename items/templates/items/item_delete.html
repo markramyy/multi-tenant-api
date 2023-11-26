@@ -15,17 +15,11 @@
         </style>
     </head>
     <body>
-        <h1>Items</h1>
-        <ul>
-            {% for item in items %}
-                <li>
-                    {{ item.name }} -
-                    <a href="{% url 'item_detail' pk=item.pk %}">View</a> |
-                    <a href="{% url 'item_update' pk=item.pk %}">Edit</a> |
-                    <a href="{% url 'item_delete' pk=item.pk %}">Delete</a>
-                </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'item_create' %}">Create New Item</a>
+        <h1>Are you sure you want to delete "{{ object.name }}"?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+        </form>
+        <a href="{% url 'item_list' %}">Cancel</a>
     </body>
 </html>
