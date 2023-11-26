@@ -17,13 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from django.views.generic import RedirectView
 
-from tenants.views import home
+from rest_framework.schemas import get_schema_view
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tenants/', include("tenants.urls")),
-    path('items/', include('items.urls')),
-    path('', home, name='home'),  # Set the home view for the empty path
+    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
 
+    path('api/tenants/', include("tenants.urls")),
+    path('api/items/', include('items.urls')),
+    path('', RedirectView.as_view(url='api/docs/')),
 ]

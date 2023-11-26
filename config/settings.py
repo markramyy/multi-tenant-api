@@ -149,3 +149,14 @@ TENANT_MODEL = "tenants.Tenant"
 TENANT_DOMAIN_MODEL = "tenants.Domain"
 
 PUBLIC_SCHEMA_URLCONF = 'config.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Multi-Tenant API',
+    'DESCRIPTION': 'API for multi-tenant item management',
+    'VERSION': '1.0.0',
+    # Other settings
+}
