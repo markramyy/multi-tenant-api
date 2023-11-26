@@ -142,3 +142,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TENANT_MODEL = "tenants.Tenant"
+
+TENANT_DOMAIN_MODEL = "tenants.Domain"
