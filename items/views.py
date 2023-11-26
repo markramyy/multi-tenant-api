@@ -24,18 +24,18 @@ class ItemCreateView(generic.CreateView):
     model = Item
     template_name = 'items/item_create.html'
     fields = ['name', 'description', 'price']
-    success_url = reverse_lazy('items:item_list')
+    success_url = reverse_lazy('item_list')
 
 
 class ItemUpdateView(generic.UpdateView):
     model = Item
     template_name = 'items/item_update.html'
     fields = ['description', 'price']
-    success_url = reverse_lazy('items:item_list')
+    success_url = reverse_lazy('item_list')
 
 
 class ItemDeleteView(generic.DeleteView):
     model = Item
     template_name = 'items/item_delete.html'
-    success_url = reverse_lazy('items:item_list')
+    success_url = reverse_lazy('item_list')
 
