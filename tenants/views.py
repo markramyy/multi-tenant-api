@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import HttpResponse
 
 from .models import Tenant
 from .forms import TenantForm, DomainForm
@@ -34,5 +33,3 @@ def create_tenant(request):
     }
     return render(request, 'tenants/create_tenant.html', context)
 
-def home(request):
-    return HttpResponse("Welcome to the Multi-Tenant API Home Page")
