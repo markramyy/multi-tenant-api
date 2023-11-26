@@ -20,6 +20,7 @@ from django.shortcuts import redirect
 from django.views.generic import RedirectView
 
 from rest_framework.schemas import get_schema_view
+from rest_framework.authtoken.views import obtain_auth_token
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 
@@ -31,4 +32,6 @@ urlpatterns = [
     path('api/tenants/', include("tenants.urls")),
     path('api/items/', include('items.urls')),
     path('', RedirectView.as_view(url='api/docs/')),
+
+    path('api/token/', obtain_auth_token, name='api-token-auth'),
 ]
