@@ -7,6 +7,8 @@ class Tenant(TenantMixin):
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
 
+    auto_create_schema = True
+
     def __str__(self):
         return self.name
 
